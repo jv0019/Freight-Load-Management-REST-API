@@ -58,7 +58,8 @@ def update_load(load_id):
     load.date = data.get('date', load.date)
 
     db.session.commit()
-    return load_schema.jsonify(load), 200
+    result = load_schema.dump(load)
+    return jsonify(result), 200
 
 @load_bp.route('/load/<load_id>', methods=['DELETE'])
 def delete_load(load_id):
