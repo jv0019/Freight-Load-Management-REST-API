@@ -14,3 +14,4 @@ class LoadSchema(Schema):
 
 load_schema = LoadSchema()
 loads_schema = LoadSchema(many=True)
+
