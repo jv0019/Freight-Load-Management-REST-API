@@ -13,3 +13,4 @@ class Load(db.Model):
     comment = db.Column(db.String(200))
     shipper_id = db.Column(db.String(36), nullable=False)
     date = db.Column(db.String, nullable=False)
+
