@@ -106,19 +106,19 @@ Database Models
 The database consists of the following models:
 -Load: Represents the load data.
 
-Schemas
+## Schemas
 
 The API uses JSON schemas for request validation.
 
-Error Handling
+## Error Handling
 
 Errors are handled gracefully and return appropriate HTTP status codes.
 
-Testing
+## Testing
 
-To test the application, you can use tools like Postman or run unit tests provided in the tests directory.
+To test the API endpoints, use a tool like Postman. Import the endpoints listed above and test each one individually.
 
-Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps to contribute:
 -Fork the repository.
@@ -126,5 +126,5 @@ Contributions are welcome! Please follow these steps to contribute:
 -Make your changes and commit them.
 -Submit a pull request.
 
-License
+## License
 This project is licensed under the MIT License.
