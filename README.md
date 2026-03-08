@@ -1,4 +1,5 @@
 # Freight Load Management REST API Documentation
+#### A RESTful backend service for managing freight shipment loads including origin, destination, truck allocation, and shipper tracking built with Flask, SQLAlchemy and Marshmallow.
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
@@ -17,8 +18,6 @@
 7. [Schemas](#schemas)
 8. [Error Handling](#error-handling)
 9. [Testing](#testing)
-10. [Contributing](#contributing)
-11. [License](#license)
 
 ## Getting Started
 
@@ -117,14 +116,3 @@ Errors are handled gracefully and return appropriate HTTP status codes.
 ## Testing
 
 To test the API endpoints, use a tool like Postman. Import the endpoints listed above and test each one individually.
-
-## Contributing
-
-Contributions are welcome! Please follow these steps to contribute:
--Fork the repository.
--Create a new branch.
--Make your changes and commit them.
--Submit a pull request.
-
-## License
-This project is licensed under the MIT License.
