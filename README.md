@@ -53,7 +53,7 @@ The application will be accessible at http://127.0.0.1:5000.
 
 ## API Endpoints
 
-Create Load:
+# Create Load:
 
 Endpoint: /load
 Method: POST
@@ -71,25 +71,25 @@ Example Request:
     "date": "2026-03-06"
 }
 
-Retrieve Loads:
+# Retrieve Loads:
 
 Endpoint: /load
 Method: GET
 Description: Retrieves all loads.
 
-Retrieve Single Load:
+# Retrieve Single Load:
 
 Endpoint: /load/<load_id>
 Method: GET
 Description: Retrieves a specific load by its ID.
 
-Update Load:
+# Update Load:
 
 Endpoint: /load/<load_id>
 Method: PUT
 Description: Updates a specific load.
 
-Delete Load:
+# Delete Load:
 
 Endpoint: /load/<load_id>
 Method: DELETE
@@ -97,11 +97,11 @@ Description: Deletes a specific load.
 
 ## Database
 
-Database Configuration:
+# Database Configuration:
 
 The application uses SQLite for data storage.
 
-Database Models
+# Database Models
 
 The database consists of the following models:
 -Load: Represents the load data.
