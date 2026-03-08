@@ -1,4 +1,4 @@
-# Task Manager API Documentation
+# Freight Load Management REST API Documentation
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
@@ -28,7 +28,7 @@ Instructions for getting started with the project.
 
 You need to have the following software installed before running the application:
 - Python 3.8 or higher
-- PostgreSQL
+- SQLite
 
 ## Installation
 
@@ -61,9 +61,15 @@ Description: Creates a new load.
 
 Example Request:
    {
-     "shipperId": "123456789",
-     "description": "Sample load"
-   }
+    "loading_point": "Mumbai",
+    "unloading_point": "Pune",
+    "product_type": "Cement",
+    "truck_type": "Heavy",
+    "no_of_trucks": 3,
+    "weight": 500.0,
+    "shipper_id": "abc123",
+    "date": "2026-03-06"
+}
 
 Retrieve Loads:
 
@@ -93,7 +99,7 @@ Description: Deletes a specific load.
 
 Database Configuration:
 
-The application uses PostgreSQL for data storage. Ensure that your PostgreSQL server is running and that you have created a database for the application.
+The application uses SQLite for data storage.
 
 Database Models
 
