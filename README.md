@@ -36,7 +36,7 @@ Follow these steps to install and set up the application:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/task_manager_api.git
+   git clone https://github.com/jv0019/task_manager_api.git
 
 2. Navigate to the project directory:
    cd task_manager_api
