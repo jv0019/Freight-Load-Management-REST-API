@@ -35,7 +35,7 @@ Follow these steps to install and set up the application:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jv0019/task_manager_api.git
+   https://github.com/jv0019/Freight-Load-Management-REST-API.git
 
 2. Navigate to the project directory:
    cd task_manager_api
