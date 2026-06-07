@@ -1,118 +1,394 @@
-# Freight Load Management REST API Documentation
-#### A RESTful backend service for managing freight shipment loads including origin, destination, truck allocation, and shipper tracking built with Flask, SQLAlchemy and Marshmallow.
+# 🚚 Freight Load Management REST API
 
-## Table of Contents
-1. [Getting Started](#getting-started)
-2. [Prerequisites](#prerequisites)
-3. [Installation](#installation)
-4. [Running the Application](#running-the-application)
-5. [API Endpoints](#api-endpoints)
-   - [Create Load](#create-load)
-   - [Retrieve Loads](#retrieve-loads)
-   - [Retrieve Single Load](#retrieve-single-load)
-   - [Update Load](#update-load)
-   - [Delete Load](#delete-load)
-6. [Database](#database)
-   - [Database Configuration](#database-configuration)
-   - [Database Models](#database-models)
-7. [Schemas](#schemas)
-8. [Error Handling](#error-handling)
-9. [Testing](#testing)
+A RESTful backend service for managing freight shipment loads, including origin and destination tracking, truck allocation, shipment details, and shipper management.
 
-## Getting Started
+Built using **Flask**, **SQLAlchemy**, and **Marshmallow**, this project demonstrates REST API design, database modeling, data validation, and CRUD operations commonly used in logistics and transportation management systems.
 
-Instructions for getting started with the project.
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Flask](https://img.shields.io/badge/Flask-REST_API-black)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue)
+![Marshmallow](https://img.shields.io/badge/Marshmallow-Validation-green)
 
-## Prerequisites
+---
 
-You need to have the following software installed before running the application:
-- Python 3.8 or higher
-- SQLite
+## 🚀 Overview
 
-## Installation
+Freight and logistics companies need a centralized system to manage shipment loads, allocate transportation resources, and track deliveries efficiently.
 
-Follow these steps to install and set up the application:
+This API provides:
 
-1. Clone the repository:
-   ```bash
-   https://github.com/jv0019/Freight-Load-Management-REST-API.git
+* Load creation and management
+* Origin and destination tracking
+* Truck allocation management
+* Shipper identification
+* Data validation
+* Persistent storage
+* RESTful CRUD operations
 
-2. Navigate to the project directory:
-   cd task_manager_api
+The service can act as the backend foundation for transportation management systems (TMS), freight marketplaces, and logistics platforms.
 
-3. Install the required Python packages:
-   pip install -r requirements.txt
+---
 
-## Running the Application
+## ✨ Features
 
-To run the application locally, use the following command:
-    python -m flask run
+### 📦 Load Management
 
-The application will be accessible at http://127.0.0.1:5000.
+* Create shipment loads
+* Retrieve individual shipments
+* List all active loads
+* Update shipment details
+* Delete shipment records
 
-## API Endpoints
+### 🚛 Transportation Tracking
 
-### Create Load:
+* Loading location tracking
+* Unloading destination tracking
+* Truck allocation management
+* Weight and shipment capacity recording
 
-Endpoint: /load
-Method: POST
-Description: Creates a new load.
+### 📝 Data Validation
 
-Example Request:
-   {
-    "loading_point": "Mumbai",
-    "unloading_point": "Pune",
-    "product_type": "Cement",
-    "truck_type": "Heavy",
-    "no_of_trucks": 3,
-    "weight": 500.0,
-    "shipper_id": "abc123",
-    "date": "2026-03-06"
+* Structured request validation
+* JSON serialization and deserialization
+* Schema-driven data integrity
+
+### 🗄 Database Persistence
+
+* SQLAlchemy ORM integration
+* SQLite database storage
+* Object-relational mapping
+* Persistent shipment records
+
+### 🔌 RESTful API Design
+
+* Resource-oriented endpoints
+* Standard HTTP methods
+* Consistent JSON responses
+* Proper status code handling
+
+---
+
+## 🏗 System Architecture
+
+```text
+Client (Postman / Frontend)
+            │
+            ▼
+     Flask REST API
+            │
+            ▼
+      Marshmallow
+     Validation Layer
+            │
+            ▼
+       SQLAlchemy
+            │
+            ▼
+        SQLite DB
+```
+
+---
+
+## 🛠 Technology Stack
+
+| Layer             | Technology  |
+| ----------------- | ----------- |
+| Backend Framework | Flask       |
+| ORM               | SQLAlchemy  |
+| Serialization     | Marshmallow |
+| Database          | SQLite      |
+| API Testing       | Postman     |
+| Language          | Python      |
+
+---
+
+## 📂 Project Structure
+
+```text
+freight-load-management-api/
+│
+├── app.py
+├── models.py
+├── schemas.py
+├── requirements.txt
+├── instance/
+│   └── database.db
+│
+└── README.md
+```
+
+> Project structure may vary slightly depending on your implementation.
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+
+Before running the project, ensure you have:
+
+* Python 3.8+
+* pip
+* SQLite
+
+---
+
+### Clone Repository
+
+```bash
+git clone https://github.com/jv0019/Freight-Load-Management-REST-API.git
+cd Freight-Load-Management-REST-API
+```
+
+---
+
+### Create Virtual Environment (Optional)
+
+```bash
+python -m venv venv
+```
+
+Activate:
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Running the Application
+
+Start the Flask server:
+
+```bash
+python -m flask run
+```
+
+The API will be available at:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+## 📚 API Endpoints
+
+### Create Load
+
+**POST** `/load`
+
+Creates a new shipment load.
+
+#### Example Request
+
+```json
+{
+  "loading_point": "Mumbai",
+  "unloading_point": "Pune",
+  "product_type": "Cement",
+  "truck_type": "Heavy",
+  "no_of_trucks": 3,
+  "weight": 500.0,
+  "shipper_id": "abc123",
+  "date": "2026-03-06"
 }
+```
 
-### Retrieve Loads:
+#### Success Response
 
-Endpoint: /load
-Method: GET
-Description: Retrieves all loads.
+```json
+{
+  "message": "Load created successfully"
+}
+```
 
-### Retrieve Single Load:
+---
 
-Endpoint: /load/<load_id>
-Method: GET
-Description: Retrieves a specific load by its ID.
+### Retrieve All Loads
 
-### Update Load:
+**GET** `/load`
 
-Endpoint: /load/<load_id>
-Method: PUT
-Description: Updates a specific load.
+Returns all shipment loads.
 
-### Delete Load:
+#### Example
 
-Endpoint: /load/<load_id>
-Method: DELETE
-Description: Deletes a specific load.
+```http
+GET /load
+```
 
-## Database
+---
 
-### Database Configuration:
+### Retrieve Single Load
 
-The application uses SQLite for data storage.
+**GET** `/load/<load_id>`
 
-### Database Models
+Returns a specific shipment using its unique identifier.
 
-The database consists of the following models:
--Load: Represents the load data.
+#### Example
 
-## Schemas
+```http
+GET /load/1
+```
 
-The API uses JSON schemas for request validation.
+---
 
-## Error Handling
+### Update Load
 
-Errors are handled gracefully and return appropriate HTTP status codes.
+**PUT** `/load/<load_id>`
 
-## Testing
+Updates an existing shipment record.
 
-To test the API endpoints, use a tool like Postman. Import the endpoints listed above and test each one individually.
+#### Example
+
+```http
+PUT /load/1
+```
+
+---
+
+### Delete Load
+
+**DELETE** `/load/<load_id>`
+
+Deletes a shipment record.
+
+#### Example
+
+```http
+DELETE /load/1
+```
+
+---
+
+## 🗄 Database Design
+
+### Load Model
+
+The system stores freight shipment information including:
+
+| Field           | Description                |
+| --------------- | -------------------------- |
+| loading_point   | Shipment origin            |
+| unloading_point | Shipment destination       |
+| product_type    | Type of cargo              |
+| truck_type      | Vehicle category           |
+| no_of_trucks    | Number of allocated trucks |
+| weight          | Shipment weight            |
+| shipper_id      | Unique shipper identifier  |
+| date            | Shipment date              |
+
+---
+
+## 🔍 Request Validation
+
+Marshmallow schemas are used for:
+
+* Input validation
+* JSON serialization
+* Data deserialization
+* Type checking
+* Error reporting
+
+This ensures consistent API behavior and protects against invalid payloads.
+
+---
+
+## ⚠ Error Handling
+
+The API returns appropriate HTTP status codes and error messages.
+
+### Common Status Codes
+
+| Status Code | Meaning               |
+| ----------- | --------------------- |
+| 200         | Success               |
+| 201         | Resource Created      |
+| 400         | Bad Request           |
+| 404         | Resource Not Found    |
+| 500         | Internal Server Error |
+
+---
+
+## 🧪 Testing
+
+The API can be tested using:
+
+* Postman
+* Insomnia
+* curl
+* Any HTTP client
+
+### Example
+
+```bash
+curl -X GET http://127.0.0.1:5000/load
+```
+
+---
+
+## 💡 Learning Outcomes
+
+This project demonstrates:
+
+* REST API development
+* CRUD operations
+* Database design
+* ORM usage with SQLAlchemy
+* Request validation using Marshmallow
+* Backend architecture principles
+* JSON API design
+* Logistics domain modeling
+
+---
+
+## 🚀 Future Improvements
+
+* [ ] JWT Authentication
+* [ ] User & Shipper Management
+* [ ] PostgreSQL Support
+* [ ] Pagination & Filtering
+* [ ] Search Functionality
+* [ ] API Documentation with Swagger/OpenAPI
+* [ ] Shipment Status Tracking
+* [ ] Rate Limiting
+* [ ] Docker Deployment
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## 👤 Author
+
+**Jivitesh Sachdev**
+
+Software Development • Backend Engineering • API Design
+
+GitHub: https://github.com/jv0019
+
+---
+
+### Keywords
+
+REST API • Flask • SQLAlchemy • Marshmallow • Logistics Software • Freight Management • Transportation Management System • Backend Development • CRUD API • Python
